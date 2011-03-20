@@ -1,0 +1,87 @@
+<html>
+<head>
+  <style type="text/css" media="screen">
+    #radial_container { 
+      position:relative; 
+      left:425px; 
+      top: 75px; 
+      width:100px; 
+      height:100px; 
+      text-align:center;
+    }
+    .radial_div_item {
+      background-color:none;
+      height:30px;
+      padding:10px;
+      color:#234;
+      -moz-border-radius:10px;
+      -webkit-border-radius:10px;
+      cursor:pointer;
+    }
+    .radial_div_item.active { 
+      background-color:#511; color:white;
+      padding: 10px; 
+      -moz-border-radius:40px;
+      z-index:100;
+    }
+    .my_class { 
+      -moz-border-radius:30px;
+      -webkit-border-radius:30px;
+      width:150px;
+      height:30px;
+    }
+    .overlay {
+      background: url("cyclebg.png") no-repeat scroll 0 0 transparent;
+      height: 400px;
+      left: -80px;
+      position: absolute;
+      top: -75px;
+      width: 400px;
+    }
+  </style>
+</head>
+<body>
+<script type="text/javascript"
+ src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script type='text/javascript' src='jQuery.radmenu.min.js'></script>
+
+<div>
+  <a href="#" onClick='jQuery("#radial_container").radmenu("next")'>前へ</a>&nbsp;
+  <a href="#" onClick='jQuery("#radial_container").radmenu("prev")'>次へ</a>&nbsp;
+</div>
+
+<div id='radial_container'>
+  <ul class='list'>
+    <li class='item'><div class='my_class'>売上が発生する</div></li>
+    <li class='item'><div class='my_class'>サービスを持つ</div></li>
+    <li class='item'><div class='my_class'>告知する</div></li>
+    <li class='item'><div class='my_class'>ユーザが使い始める</div></li>
+    <li class='item'><div class='my_class'>ユーザが集まる</div></li>
+    <li class='item'><div class='my_class'>コンテンツが増える</div></li>
+    <li class='item'><div class='my_class'>ユーザが増える</div></li>
+    <li class='item'><div class='my_class'>広告を載せる</div></li>
+  </ul>
+  <div class="overlay"></div>
+</div>
+
+
+
+<script type='text/javascript'>
+jQuery("#radial_container").radmenu({
+  listClass: 'list', // the list class to look within for items
+  itemClass: 'item', // the items - NOTE: the HTML inside the item is copied into the menu item
+  radius: 185, // radius in pixels
+  animSpeed:400, // animation speed in millis
+  centerX: 30, // the center x axis offset
+  centerY: 100, // the center y axis offset
+  selectEvent: "click", // the select event (click)
+  onSelect: function($selected){ // show what is returned
+    alert("you clicked on .. " + $selected.index());
+  },
+  angleOffset: Math.PI // in radians
+});
+jQuery("#radial_container").radmenu("show");
+</script>
+
+</body>
+</html>
